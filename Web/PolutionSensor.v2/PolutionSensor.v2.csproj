@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>8debd2a6-03da-48ab-912f-319d856b2f2f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\scripts\" />
+    <Folder Include="SQL\StoredProcedure\" />
+    <Folder Include="Views\Statistics\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\scripts\bootstrap.js" />
+    <None Include="wwwroot\scripts\bootstrap.min.js" />
+    <None Include="wwwroot\scripts\jquery-3.3.1.intellisense.js" />
+    <None Include="wwwroot\scripts\jquery-3.3.1.js" />
+    <None Include="wwwroot\scripts\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\scripts\jquery-3.3.1.min.map" />
+    <None Include="wwwroot\scripts\jquery-3.3.1.slim.js" />
+    <None Include="wwwroot\scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="wwwroot\scripts\jquery-3.3.1.slim.min.map" />
+    <None Include="wwwroot\scripts\jquery.validate-vsdoc.js" />
+    <None Include="wwwroot\scripts\jquery.validate.js" />
+    <None Include="wwwroot\scripts\jquery.validate.min.js" />
+    <None Include="wwwroot\scripts\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\scripts\modernizr-2.8.3.js" />
+    <None Include="wwwroot\scripts\pieChart.js" />
+    <None Include="wwwroot\scripts\RGraph.svg.common.core.js" />
+    <None Include="wwwroot\scripts\RGraph.svg.hbar.js" />
+    <None Include="wwwroot\scripts\RGraph.svg.pie.js" />
+  </ItemGroup>
+
+</Project>
