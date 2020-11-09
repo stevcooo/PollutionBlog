@@ -1,0 +1,54 @@
+@model  IEnumerable<PollutionSensor.v2.ViewModels.PollutionStatisticsViewModel>
+@{
+    ViewBag.Title = "Daily Statistics";
+}
+
+    <script src="~/scripts/RGraph.svg.common.core.js"></script>
+    <script src="~/scripts/RGraph.svg.hbar.js"></script>
+    <script src="~/scripts/RGraph.svg.pie.js"></script>
+    <script src="~/scripts/pieChart.js"></script>
+
+    <style>
+        #data{
+            padding-top:20px;
+        }
+        .gauge {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <div id="data">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="details col-md-4">
+                    <div class="row">
+                        <label class="col-md-4">Date:</label>
+                        <label class="col-md-8">@item.Date.ToShortDateString()</label>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4">SSID:</label>
+                        <label class="col-md-8">@item.SSID</label>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4">Entries:</label>
+                        <label class="col-md-8">@item.TotalEntries</label>
+                    </div>
+                    @Html.ActionLink("Details", "Hourly", new { id = item.Date.ToString("yyyyMMdd") })
+                </div>
+                <div class="col-md-7">
+                    <div id="chart-container-25-@item.Id" class="gauge col-md-6"></div>
+                    <div id="chart-container-10-@item.Id" class="gauge col-md-6"></div>
+                </div>
+            </div>
+        }
+    </div>
+    <script>
+         @foreach (var item in Model)
+            {
+                <text>
+                    createPie(@item.PM25, 400, "PM 2.5", "chart-container-25-@item.Id", "@item.Pm25Color");
+                    createPie(@item.PM10, 400, "PM 10", "chart-container-10-@item.Id", "@item.Pm10Color");
+                </text>
+            }        
+    </script>
