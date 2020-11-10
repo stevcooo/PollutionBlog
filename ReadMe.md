@@ -76,7 +76,7 @@ STL models:
 ## Software
 Because we want data received from the sensor to be sent/written in the database, we need some sort of endpoint where our ESP8266 can send data. For that purpose, we will create a web site where we can store or view our data. Please note that in this example we use unprotected API, so do not expose your endpoint or use some kind of authentication to avoid abuse of your resources (if some destructive person finds your endpoint then it can easily overflow with data).  Our web solution has two parts, one is where ESP8266 has access and post data (sensor data about PM 10 and PM 2.5), and the other is a page we can see segmented data. Also, because we can deal with a lot of data, here I'm using an SQL View that will prepare the required data on data level and then EF will pick it up as prepared and display in our scree, also here I implemented a caching mechanism, to avoid the constant call to the DB when the data is not changed.[`EntriesApiController`](Web/PollutionSensor.v2/Controllers/EntriesApiController.cs) is the controller that has been called when ESP8266 tries to send data via the `API/Entries` endpoint, this is a POST method. Also in this controller, we have GET method that will retrieve all records from the DB, you can use this for debugging.  Also, we have [`StatisticsController`](Web/PollutionSensor.v2/Controllers/StatisticsController.cs), where we call the `EntriesService` to get statistics from DB.
 
-### Pepeare
+### Prepare
 #### Software
 When you create a database, you need to get the ConnectionString and put it in [`appsettings.json`](Web/PollutionSensor.v2/appsettings.json) instead of the value `YOUR_DATABASE_CONNECTION_HERE`.  
 Also, when you create the database, you need to copy/paste this scripts:  
@@ -85,7 +85,7 @@ Also, when you create the database, you need to copy/paste this scripts:
 
 This will be enough to run the web application or host it if you like, you can also test your endpoints with Postman or something similar just to be sure that the software part of this project works fine.  
 #### Hardware/Arduino
-When you're done with the web probject, now is time to put the values inside the [`Arduino code`](Arduino/pollution-sensor-wifi-post-and-two-displays/pollution-sensor-wifi-post-and-two-displays.ino).  
+When you're done with the web project, now is time to put the values inside the [`Arduino code`](Arduino/pollution-sensor-wifi-post-and-two-displays/pollution-sensor-wifi-post-and-two-displays.ino).  
 Here `NAME_OF_YOUR_NETWORK` should be the name of your local network, and also `NETWORK_PASSWORD` should be the password of your network.  
 For the endpoint, here, the value of `PATH_OF_YOUR_ENDPOINT` should be replaced with the address of your endpoint, for example, http://mysensordatadomai.com/api/Entries if you host your application on some web/cloud provider, or http://localhost:27005/api/Entries if the application is hosted on your machine (please check the port).
 
@@ -99,7 +99,7 @@ You will need the driver:
 ![Board](Images/esp8266-arduino-ide-preferences.png) 
 *<center>Install board</center>*  
 
-Because there are many options, here is my configuration, so you may find it usefull:
+Because there are many options, here is my configuration, so you may find it useful:
 ![Config](Arduino/NodeMcuConfig_arduino.png) 
 *<center>My selected configuration</center>*  
 
